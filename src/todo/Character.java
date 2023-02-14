@@ -1,7 +1,5 @@
 package todo;
 
-import Game.Role;
-
 public class Character extends Role{
     public Character() {
         super("战士", 100, 100, 100, 100, 10, 0, "Image/战士001.png", "普攻", "重击", "狂暴","逃跑");

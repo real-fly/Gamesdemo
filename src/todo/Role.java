@@ -1,4 +1,4 @@
-package Game;
+package todo;
 public abstract class Role {
     private String name; // 角色名
     private double hp; // 血量
