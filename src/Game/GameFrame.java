@@ -11,20 +11,21 @@ import javax.swing.border.EmptyBorder;
   
 public class GameFrame extends JFrame {
 
-    Player player = new Player("src\\Image\\playerdown.png", 100, 200, this, "src\\Image\\playerup.png",
+    Player player = new Player("src\\Image\\playerdown.png", 250, 350, this, "src\\Image\\playerup.png",
             "src\\Image\\playerdown.png", "src\\Image\\playerleft.png", "src\\Image\\playerright.png");
+    NPC1 npc_1 = new NPC1("src\\Image\\npc01.png", 500, 500, this);
 
     UpdateThread ut;
 
     public GameFrame() {
         this.setSize(1600, 900); // 设置窗口大小
-        setLocationRelativeTo(null); // 把窗口位置设置到屏幕中心
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 关闭窗口模式
-        setResizable(false); // 窗口固定
+        this.setLocationRelativeTo(null); // 把窗口位置设置到屏幕中心
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 关闭窗口模式
+        this.setResizable(false); // 窗口固定
 
         JPanel gamePan = new JPanel(); //中间容器
         gamePan.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(gamePan);
+        this.setContentPane(gamePan);
         gamePan.setLayout(null);
 
         JPanel panel = new MyPanel();
@@ -32,7 +33,7 @@ public class GameFrame extends JFrame {
         gamePan.add(panel);
         panel.setLayout(null);
 
-        setVisible(true);
+        this.setVisible(true);
 
         //多线程
         ut = new UpdateThread(panel);
@@ -97,6 +98,7 @@ public class GameFrame extends JFrame {
             g.drawImage(map1.getImage(), 0, 0, null);
 
             player.paintSelf(g);
+            npc_1.paintSelf(g);
         }
     }
 
@@ -118,6 +120,5 @@ public class GameFrame extends JFrame {
                 }
             }
         }
-
     }
 }
