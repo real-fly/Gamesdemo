@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -8,10 +7,9 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+
 import javax.swing.border.EmptyBorder;
   
 public class GameFrame extends JFrame {
@@ -111,22 +109,20 @@ public class GameFrame extends JFrame {
     
     class MyPanel extends JPanel {
         public void paint(Graphics g) {
-            // super.paint(g);
+            // 绘制地图
             ImageIcon map1 = new ImageIcon("src\\Image\\map1.png");
-
             g.drawImage(map1.getImage(), 0, 0, null);
-
+            //绘制玩家
             player.paintSelf(g);
 
-            //npc
-
+            //绘制npc
             for (NPC1 npc1 : npc1list) {
                 npc1.paintSelf(g);
             }
+            //绘制空气墙
             for (AirWall wall : walllist) {
                 wall.paintSelf(g);
             }
-
         }
     }
 

@@ -24,5 +24,4 @@ public class AirWall extends GameObject {
         // TODO Auto-generated method stub
         return new Rectangle(x, y, length, length);
     }
-
 }

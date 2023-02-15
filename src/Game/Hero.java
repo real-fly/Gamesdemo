@@ -3,14 +3,15 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
 
 public abstract class Hero extends GameObject {
     // 角色矩形的尺寸
-    public int width = 45;
-    public int height = 45;
+    public static int width = 45;
+    public static int height = 45;
     // 角色移动速度
-    private int speed = 3;
+    static int speed = 3;
     // 角色方向
     private Direction direction = Direction.DOWN;
     // 四向图片
@@ -76,8 +77,8 @@ public abstract class Hero extends GameObject {
                 return true;
             }
         }
-        for (NPC1 npc_1 : npc1_s) {
-            if (next.intersects(npc_1.getRec())) {
+        for (NPC1 npc : npc1_s) {
+            if (next.intersects(npc.getRec())) {
                 return true;
             }
         }

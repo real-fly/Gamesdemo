@@ -43,27 +43,6 @@ public class Start extends JFrame {
 
         // 绘制开始界面
         paint();
-
-        // // 按钮响应事件
-        // btn.addActionListener(new ActionListener() {
-        // public void actionPerformed(ActionEvent arg0) {
-        // // a.stop();
-        // // BGM w = new BGM();
-        // // w.play();
-        // Character hero = new Character();
-        // try {
-        // new MoveFrame(hero);
-        // } catch (InterruptedException e) {
-        // // TODO 自动生成的 catch 块
-        // e.printStackTrace();
-        // }
-        // dispose();
-        // }
-        // });
-        // pan.setLayout(null);
-        // btn.setBorderPainted(false);
-        // btn.setContentAreaFilled(false);
-        // btn.setFocusPainted(false);
     }
 
     private void paint() {
