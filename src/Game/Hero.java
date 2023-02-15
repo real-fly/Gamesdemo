@@ -3,6 +3,7 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 public abstract class Hero extends GameObject {
     // 角色矩形的尺寸
@@ -29,31 +30,58 @@ public abstract class Hero extends GameObject {
     }
 
     public void upward() {
-        this.y -= speed;
+        if (!hitWall(x, y - speed)) {
+            this.y -= speed;
+        }
         setImg(upImg);
         direction = Direction.UP;
     }
 
     public void downward() {
-        this.y += speed;
+        if (!hitWall(x, y + speed)) {
+            this.y += speed;
+        }
         setImg(downImg);
         direction = Direction.DOWN;
     }
 
     public void leftward() {
-        this.x -= speed;
+        if (!hitWall(x - speed, y)) {
+            this.x -= speed;
+        }
         setImg(leftImg);
         direction = Direction.LEFT;
     }
 
     public void rightward() {
-        this.x += speed;
+        if (!hitWall(x + speed, y)) {
+            this.x += speed;
+        }
         setImg(rightImg);
         direction = Direction.RIGHT;
     }
 
     public void setImg(String img) {
         this.img = Toolkit.getDefaultToolkit().getImage(img);
+    }
+
+    // 碰撞检测
+    public boolean hitWall(int x, int y) {
+        ArrayList<AirWall> walls = this.gameFrame.walllist;
+        ArrayList<NPC1> npc1_s = this.gameFrame.npc1list;
+        // 玩家下一步位置形成的矩形
+        Rectangle next = new Rectangle(x, y, width, height);
+        for (AirWall wall : walls) {
+            if (next.intersects(wall.getRec())) {
+                return true;
+            }
+        }
+        for (NPC1 npc_1 : npc1_s) {
+            if (next.intersects(npc_1.getRec())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

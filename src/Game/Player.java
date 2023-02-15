@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class Player extends Hero {
     public Player(String img, int x, int y, GameFrame gameFrame, String upImg, String downImg, String leftImg,
@@ -20,13 +21,12 @@ public class Player extends Hero {
     public void move() {
         if (left) {
             if (leftcnt > 0) {
-                leftcnt-=3;
-                rightcnt+=3;
+                leftcnt -= 3;
+                rightcnt += 3;
                 leftward();
             } else {
                 Player.left = false;
             }
-
         } else if (right) {
             if (rightcnt > 0) {
                 rightcnt -= 3;

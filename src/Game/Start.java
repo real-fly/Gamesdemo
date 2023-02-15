@@ -1,6 +1,5 @@
 package Game;
 
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,7 +10,6 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 
 public class Start extends JFrame {
     // private JPanel contentPane;
@@ -36,7 +34,7 @@ public class Start extends JFrame {
         super("Game");
         setSize(1600, 900); // 设置窗口大小
         setLocationRelativeTo(null); // 把窗口位置设置到屏幕中心
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//关闭窗口模式
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 关闭窗口模式
         setResizable(false); // 窗口固定
 
         // 添加播放背景音乐
@@ -48,26 +46,25 @@ public class Start extends JFrame {
 
         // // 按钮响应事件
         // btn.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent arg0) {
-        //         // a.stop();
-        //         // BGM w = new BGM();
-        //         // w.play();
-        //         Character hero = new Character();
-        //         try {
-        //             new MoveFrame(hero);
-        //         } catch (InterruptedException e) {
-        //             // TODO 自动生成的 catch 块
-        //             e.printStackTrace();
-        //         }
-        //         dispose();
-        //     }
+        // public void actionPerformed(ActionEvent arg0) {
+        // // a.stop();
+        // // BGM w = new BGM();
+        // // w.play();
+        // Character hero = new Character();
+        // try {
+        // new MoveFrame(hero);
+        // } catch (InterruptedException e) {
+        // // TODO 自动生成的 catch 块
+        // e.printStackTrace();
+        // }
+        // dispose();
+        // }
         // });
         // pan.setLayout(null);
         // btn.setBorderPainted(false);
         // btn.setContentAreaFilled(false);
         // btn.setFocusPainted(false);
     }
-
 
     private void paint() {
         // 把图片添加到标签里（把标签的大小设为和图片大小相同），把标签放在分层面板的最底层；
@@ -85,7 +82,7 @@ public class Start extends JFrame {
         btn.setBounds(619, 404, 362, 92);
         pan.add(btn);
         setSize(bg.getIconWidth(), bg.getIconHeight());
-        //响应按键
+        // 响应按键
         buttonListener(btn);
 
     }
@@ -94,13 +91,11 @@ public class Start extends JFrame {
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 
-                //游戏进程
-                System.out.print("hello");
+                // 游戏进程
+                System.out.print("Game Start");
                 new GameFrame();
             }
         });
     }
-    
-    
-    
+
 }

@@ -1,19 +1,27 @@
 package Game;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
   
 public class GameFrame extends JFrame {
 
     Player player = new Player("src\\Image\\playerdown.png", 250, 350, this, "src\\Image\\playerup.png",
             "src\\Image\\playerdown.png", "src\\Image\\playerleft.png", "src\\Image\\playerright.png");
-    NPC1 npc_1 = new NPC1("src\\Image\\npc01.png", 500, 500, this);
+
+    //批量游戏物体
+    ArrayList<NPC1> npc1list = new ArrayList<NPC1>();
+    ArrayList<AirWall> walllist = new ArrayList<AirWall>();
 
     UpdateThread ut;
 
@@ -39,7 +47,8 @@ public class GameFrame extends JFrame {
         ut = new UpdateThread(panel);
         ut.start();
 
-        this.addKeyListener(new KeyListener(){
+        //角色移动的按键响应
+        this.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
@@ -82,14 +91,24 @@ public class GameFrame extends JFrame {
                 }
             }
 
-
             @Override
             public void keyTyped(KeyEvent e) {
                 // TODO Auto-generated method stub
 
             }
         });
+
+        //添加npc
+        NPC1 npc_1 = new NPC1("src\\Image\\npc01.png", 500, 500, this);
+        npc1list.add(npc_1);
+
+        //添加围墙
+        for (int i = 0; i <= 14; i++) {
+            walllist.add(new AirWall("src\\Image\\wall.png", 100 * i, 150, this));
+            walllist.add(new AirWall("src\\Image\\wall.png", 100 * i, 750, this));
+        }
     }
+    
     class MyPanel extends JPanel {
         public void paint(Graphics g) {
             // super.paint(g);
@@ -98,7 +117,16 @@ public class GameFrame extends JFrame {
             g.drawImage(map1.getImage(), 0, 0, null);
 
             player.paintSelf(g);
-            npc_1.paintSelf(g);
+
+            //npc
+
+            for (NPC1 npc1 : npc1list) {
+                npc1.paintSelf(g);
+            }
+            for (AirWall wall : walllist) {
+                wall.paintSelf(g);
+            }
+
         }
     }
 
